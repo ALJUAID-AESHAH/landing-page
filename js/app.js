@@ -45,47 +45,41 @@ for (const section of sections) {
     navItems.appendChild(item)
 }
 
-// Start Helper Functions
-// Add class 'active' to section when near top of viewport
-function addActiveClassName(value) {
-    for (const section of sections) {
-        section === sections[value] ? section.classList.add('active') : section.classList.remove('active')
-    }
-}
-// End Helper Functions
 
 
 
-const anchors = document.querySelectorAll('.menu__link')
-// const items=document.querySelectorAll('li')
+// Begin Events
 
 // Scroll to anchor ID using scrollTO event
-anchors.forEach((key, value) => {
-    key.addEventListener('click', function (event) {
+
+const anchors = document.querySelectorAll('.menu__link')
+anchors.forEach((value, key) => {
+    value.addEventListener('click', function (event) {
         event.preventDefault();
-        // Set sections as active
-        addActiveClassName(value)
         // Scroll to section on link click
-        const element = sections[value]
-        element.scrollIntoView({ behavior: "smooth" })
-        // element.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
-        // const topPos = sections[value].getBoundingClientRect().top + window.pageYOffset
-        // console.log(topPos);
-        // window.scroll({
-        //     top: topPos,
-        //     behavior: 'smooth'
-        // });
+        const topPos = sections[key].getBoundingClientRect().top + window.pageYOffset
+        window.scrollTo({
+            top: topPos,
+            behavior: 'smooth'
+        });
     })
 
 })
+
+// Add class 'active' to section when near top of viewport
+window.addEventListener('scroll', () => {
+    for (const section of sections) {
+        if (section.getBoundingClientRect().top >= -597 && section.getBoundingClientRect().top <= 270) {
+            section.classList.add("active")
+        } else {
+            section.classList.remove("active")
+        }
+    }
+})
 /**
  * End Main Functions
- * Begin Events
  *
 */
-
-// Build menu 
-
 
 
 
