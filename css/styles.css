@@ -90,13 +90,17 @@ section {
     padding: 1em;
     font-weight: bold;
     text-decoration: none;
-    color: #000;
+    /* color: #000; */
 }
 
 .navbar__menu .menu__link:hover {
     background: #333;
     color: #fff;
     transition: ease 0.3s all;
+}
+
+.actived {
+    background: rgb(177, 174, 174);
 }
 
 
